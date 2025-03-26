@@ -3,25 +3,45 @@ import axios from "axios";
 import express from "express";
 import fs from "fs";
 import env from "dotenv";
+import { timeStamp } from "console";
 
 const app = express();
 const PORT = 3000;
 
-async function getF1drivers() {
+//-------------------Step by Step----------------------
+//string sent to headers sent to browser to stop bots
+const USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+//while sending request just add this
+
+/**
+ * scraping and returning type also its hint
+ * @returns {Promise<Object>} //promise resolves to object
+ */
+
+//--------------------now async func using axios---------------------
+
+async function scrapeNews() {
   try {
-    const url = process.env.URL;
-    const response = await axios.get(url, {
+    const url = "https://news.ycombinator.com/";
+    //making req time
+
+    console.log("Fetching >>>> >>> >>> ");
+    const res = axios.get(url, {
       headers: {
         "User-Agent": USER_AGENT,
       },
     });
-    // console.log(response);
-    //-----------------------------cheerio time------------------------
-    const $ = cheerio.load(response.data);
-    //html parsing ft cheerio!>>?
-    const dataStorage=[];
-
+    //-----------------------get htmls by cheerio------------------------
+    const $ = cheerio.load(res.data);
+    const newsPortal=[];
     
-  } catch {}
+  } catch (error) {
+    console.error("Error scrapping Hacker News");
+    return {
+      error: true,
+      message: error.message,
+      timeStamp: new Date().toISOString(), //iso formatted string
+    };
+  }
 }
-getF1drivers();
