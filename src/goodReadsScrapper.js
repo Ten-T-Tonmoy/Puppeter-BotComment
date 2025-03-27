@@ -27,8 +27,10 @@ async function bookScraper() {
      * id =>autoincrements
      * title
      * author
-     * rating
      * link
+     * avg rating
+     * num of ratings
+     * published
      */
     //selects all shits with this classname
     $(".elementList").each((idx, el) => {
@@ -46,11 +48,11 @@ async function bookScraper() {
       const author = authorTag.text().trim();
 
       //book rating-------------------------------
-      const ratingTag = $(el).find(".greyTest");
-      const avgTotPub = ratingTag.text().trim();
-      const avgRating = "";
-      const ratingNumber = "";
-      const published = "";
+      const ratingTag = $(el).find(".greyText.smallText");
+      let avgTotPub = ratingTag.text().trim();
+      let avgRating = "";
+      let ratingNumber = "";
+      let published = "";
       let i = 0;
       let one = true,
         two = true;
@@ -71,14 +73,32 @@ async function bookScraper() {
         } else published += avgTotPub[i];
       }
 
-      
+      books.push({
+        id: idx + 1,
+        title,
+        author,
+        published: published.trim(),
+        avgRating: avgRating.trim(),
+        totalRatings: ratingNumber.trim(),
+        link,
+      });
     });
+
+    return {
+      source: "Goodreads by Scrapping",
+      sourceUrl: url,
+      timestamp: new Date().toISOString(),
+      resultNumber: books.length,
+      result: books,
+    };
   } catch (e) {
     console.error("BookScrapper error");
     return {
       error: true,
-      message: error.message,
+      message: e.message,
       timestamp: new Date().toISOString(),
     };
   }
 }
+
+bookScraper().then((data) => console.log(data));
