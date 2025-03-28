@@ -67,4 +67,6 @@ async function quoteScrapper() {
   }
 }
 
-quoteScrapper().then((data) => console.log(data));
+// quoteScrapper().then((data) => console.log(data));
+
+export default quoteScrapper;

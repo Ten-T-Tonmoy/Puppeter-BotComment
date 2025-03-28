@@ -3,6 +3,7 @@ import axios from "axios";
 import nodemon from "nodemon"; // no need tho
 import path from "path";
 import { fileURLToPath } from "url";
+import scraperRoutes from "./scraper.routes.js";
 
 //bruh in module u cant just directly use __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -24,6 +25,8 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/", scraperRoutes);
+//yeah man just one route
 app.listen(PORT || 3000, () => {
   console.log(`Running on port ${PORT}`);
 });

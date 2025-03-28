@@ -101,4 +101,6 @@ async function bookScraper() {
   }
 }
 
-bookScraper().then((data) => console.log(data));
+// bookScraper().then((data) => console.log(data));
+
+export default bookScraper;

@@ -87,10 +87,12 @@ async function scrapeNews() {
 
 //-------------------async so will return promise use .then chain and print
 
-scrapeNews().then((data) => console.log(JSON.stringify(data, null, 2)));
+// scrapeNews().then((data) => console.log(JSON.stringify(data, null, 2)));
 /**
  * stringify(value,replacer,space)
  * value=> object or value u wanna stringify
  * modifier kind of or filter
  * adds spacings while forming
  */
+
+export default scrapeNews;

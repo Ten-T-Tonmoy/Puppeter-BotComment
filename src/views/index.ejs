@@ -6,6 +6,27 @@
   </head>
   <body>
     <h1 class="heading">Using Templating Engine shitty</h1>
-    <p>this is using var <%=title%></p>
+    <div class="contents">
+      <p>Available endpoints:</p>
+      <ul>
+        <li>
+          <code>/scrape/hackernews</code> - Scrape top stories from Hacker News
+        </li>
+        <li>
+          <code>/scrape/goodreads</code> - Scrape popular books from Goodreads
+        </li>
+        <li>
+          <code>/scrape/quotes</code> - Scrape quotes from Quotes to Scrape
+        </li>
+        <li>
+          <code>/scrape/generic?url=https://example.com</code> - Generic scraper
+          (provide URL)
+        </li>
+      </ul>
+      <p>
+        <strong>Note:</strong> This is for educational purposes only. Please
+        respect website terms of service.
+      </p>
+    </div>
   </body>
 </html>

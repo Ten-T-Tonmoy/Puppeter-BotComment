@@ -1,8 +1,17 @@
 body {
   padding: 5px;
-  background-color: aqua;
+  background-color: rgb(36, 34, 34);
   height: 100vh;
+  color: rgb(233, 194, 194);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .heading {
-  color: white;
+  background-color: blueviolet;
+  padding: 5px;
+  border-radius: 5px;
+}
+.contents {
+  background-color: blueviolet;
+  padding: 5px;
+  border-radius: 5px;
 }
